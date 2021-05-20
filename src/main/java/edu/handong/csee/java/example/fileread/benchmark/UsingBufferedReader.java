@@ -12,14 +12,23 @@ public class UsingBufferedReader {
         //-------------- Test reading 1 MB file. --------------------
 
         StopWatch.start();
-
-        BufferedReader inputStream= new BufferedReader(new FileReader(DumpDataWriter.input1MB));
-        while (inputStream.read()!=-1){}
-
-        long duration = StopWatch.stop();
-        System.out.println(duration + " milsec");
         
-        inputStream.close();
+        
+
+        try {
+        	BufferedReader inputStream= new BufferedReader(new FileReader(args[0]));
+            while (inputStream.read()!=-1){}
+            long duration = StopWatch.stop();
+            System.out.println(duration + " milsec");
+            
+            inputStream.close();
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+        	System.out.println("error");
+        }
+        
+
+        
 
 
         //-------------- Test reading 10 MB file. --------------------
